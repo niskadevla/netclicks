@@ -2,6 +2,7 @@
 
 const leftMenu = document.querySelector('.left-menu');
 const hamburger = document.querySelector('.hamburger');
+const tvShows = document.querySelector('.tv-shows');
 
 //Opening and closing the menu
 hamburger.addEventListener('click', () => {
@@ -26,3 +27,16 @@ leftMenu.addEventListener('click', e => {
     hamburger.classList.add('open');
   }
 });
+
+tvShows.addEventListener('mouseover', e => {
+  const target = e.target;
+  const tvCard = target.closest('.tv-card');
+
+  if(tvCard) {
+    const img = tvCard.querySelector('.tv-card__img');
+    const src = img.src;
+
+    img.src = img.dataset.backdrop;
+    tvCard.onmouseout = () => img.src = src;
+  }
+})
